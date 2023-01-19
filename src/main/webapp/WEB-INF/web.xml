@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <welcome-file-list>
+        <welcome-file>main.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>GeneratePasswordServlet</servlet-name>
+        <servlet-class>uz.boom.javaee.servlets.test.GeneratePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GeneratePasswordServlet</servlet-name>
+        <url-pattern>/gen-pass</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DatasourceServlet</servlet-name>
+        <servlet-class>uz.boom.javaee.servlets.test.DatasourceServlet</servlet-class>
+        <init-param>
+            <param-name>aws.secret_id</param-name>
+            <param-value>123QWEWR!#@$!@#!@#ASEDASD!@#</param-value>
+        </init-param>
+        <init-param>
+            <param-name>aws.secret_key</param-name>
+            <param-value>flhfdsgkhr95i4y6093ul456n7064uy7y095hyoi46uy09765h</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DatasourceServlet</servlet-name>
+        <url-pattern>/configs</url-pattern>
+    </servlet-mapping>
+
+
+    <context-param>
+        <param-name>datasource.username</param-name>
+        <param-value>postgres</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>datasource.password</param-name>
+        <param-value>admin123</param-value>
+    </context-param>
+
+
+    <error-page>
+        <exception-type>uz.boom.javaee.exceptions.IllegalInputException</exception-type>
+        <location>/400</location>
+    </error-page>
+
+</web-app>
